@@ -1,89 +1,86 @@
-## **2️⃣ README for Arrowood Landscaping Full-Stack Project**
+File name: README_FaceRecognition.md
 
-**File name:** `README_ArrowoodLandscaping.md`
-
-```markdown
-# Arrowood Landscaping Full-Stack Web Application
+# Face Recognition Login System
 
 ## Overview
-This is a full-stack web application for managing **Arrowood Landscaping's** business operations, including customer and service management. Built using Flask, Python, HTML, CSS, and a relational database, it provides a dynamic and user-friendly interface for staff.
+This is a standalone **face recognition login system** built using Python. It allows a user to authenticate via their webcam using the `face_recognition` library. The system captures a live image from the camera, compares it against a known face, and confirms login if a match is found.
+
+This project can be used as a security/login module for applications or demonstrations of face-based authentication.
 
 ---
 
 ## Features
-
-- **Customer Management**
-  - Add, view, update, and delete customer records.
-  - Fields: Customer ID, Name, Phone, Email, Address.
-
-- **Service Management**
-  - Add and view landscaping services requested by customers.
-  - Track service dates, types, and assigned staff.
-
-- **Reservation/Booking System**
-  - Schedule services for customers.
-  - View upcoming appointments and service details.
-
-- **Full CRUD Functionality**
-  - Users can create, read, update, and delete both customers and services.
-
-- **Database Integration**
-  - MySQL or SQLite stores customer and service information.
-  - Data dynamically retrieved and updated via Flask routes.
+- Uses the **user’s webcam** to capture live images.
+- Compares captured images to a **known face image** using the `face_recognition` Python library.
+- Returns **authentication success or failure**.
+- Can be integrated with web apps, desktop apps, or other systems requiring login verification.
+- Provides optional messaging and can be extended to auto-redirect after successful authentication.
 
 ---
 
 ## Technologies Used
-
-- Python
-- Flask
-- HTML / CSS / JavaScript
-- MySQL / SQLite
-- Jinja Templates
+- Python 3.x
+- `face_recognition` library
+- `opencv-python` (`cv2`) for camera capture
+- `numpy` (dependency of face_recognition)
+- PIL (used by face_recognition internally)
 
 ---
 
-## Installation & Setup
+## Installation
 
 1. **Clone the repository**
-   ```bash
-   git clone <your-repo-url>
-   cd arrowood_landscaping
+```bash
+git clone <your-repo-url>
+cd face_recognition_login
 
 Install dependencies
 
-pip install flask mysql-connector-python
+pip install face_recognition opencv-python numpy Pillow
 
-Set up the database
+Add your known face image
 
-Create the database and tables using the provided SQL scripts.
+Place a file like my_face.jpg in the project folder.
 
-Update database credentials in app.py.
+This image will be used as the reference for recognition.
 
-Run the application
-
-python app.py
-
-Open in browser
-
-http://127.0.0.1:5000
 Usage
 
-Navigate through the app using the navigation menu.
+Run the script
 
-Add or update customers and services through the provided forms.
+python face_auth.py
 
-View and manage service bookings dynamically.
+Allow camera access
+
+The webcam will open in a window, showing the live feed.
+
+Authentication
+
+Position your face in front of the camera.
+
+If the face matches the known face, the script will print:
+
+Face recognized! Login successful.
+
+If no match is found, the script will continue scanning until the window is closed.
+
+Exit
+
+Press Esc to close the camera feed and terminate the program.
+
+
 
 Future Improvements
 
-Staff authentication/login system
+Multi-user face authentication
 
-Improved UI/UX design
+Integration with web applications (e.g., Flask)
 
-Reporting and analytics dashboard
+Automatic logging of login attempts
 
-Email notifications for scheduled services
+GUI enhancements for better user experience
+
+Add email or database verification after successful login
 
 Author
 
